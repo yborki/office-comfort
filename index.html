@@ -476,7 +476,7 @@
                 <div class="contact-form" id="contact-form">
                     <h3 style="margin-bottom: 1rem;">Оставьте заявку</h3>
                     <p style="margin-bottom: 1.5rem; color: var(--text-soft);">Мы перезвоним в течение 30 минут и рассчитаем стоимость под ваш офис.</p>
-                    <form id="callbackForm">
+                    <form id="callbackForm" action="sendmail.php" method="POST">
                         <div class="form-group">
                             <label>Ваше имя</label>
                             <input type="text" id="name" placeholder="Анна Смирнова" required>
@@ -510,27 +510,5 @@
     </div>
 </footer>
 
-<script>
-    // Простая обработка формы без реальной отправки на сервер (демо)
-    const form = document.getElementById('callbackForm');
-    const statusDiv = document.getElementById('formStatus');
-
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const name = document.getElementById('name').value.trim();
-        const contact = document.getElementById('contactInfo').value.trim();
-        if(!name || !contact) {
-            statusDiv.innerHTML = '<div class="success-message" style="background:#fee2e2; color:#b91c1c;">❌ Пожалуйста, заполните имя и контактные данные.</div>';
-            return;
-        }
-        // Имитация отправки
-        statusDiv.innerHTML = '<div class="success-message">✅ Спасибо! Менеджер свяжется с вами в ближайшее время и рассчитает точную стоимость уборки.</div>';
-        form.reset();
-        // можно через пару секунд убрать сообщение, но для удобства оставим
-        setTimeout(() => {
-            if(statusDiv.firstChild) statusDiv.innerHTML = '';
-        }, 5000);
-    });
-</script>
 </body>
 </html>
