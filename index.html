@@ -446,48 +446,37 @@
                         <p><i class="fas fa-star"></i> <strong>Бесплатный выезд специалиста</strong> для составления точной сметы.</p>
                     </div>
                 </div>
-                <div class="contact-form" id="contact-form">
-                    <h3 style="margin-bottom: 1rem;">Оставьте заявку</h3>
-                    <p style="margin-bottom: 1.5rem; color: var(--text-soft);">Мы перезвоним в течение 30 минут и рассчитаем стоимость под ваш офис.</p>
-                    
-                    <!-- ФОРМА С ИСПРАВЛЕНИЯМИ ДЛЯ GITHUB PAGES И FORMSPREE -->
-                    <form id="callbackForm">
-                        <div class="form-group">
-                            <label>Ваше имя</label>
-                            <input type="text" id="name" name="name" placeholder="Анна Смирнова" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Телефон или Email</label>
-                            <input type="text" id="contactInfo" name="contactInfo" placeholder="+7 (999) 123-45-67" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Площадь офиса (м²)</label>
-                            <input type="number" id="area" name="area" placeholder="Например, 85">
-                        </div>
-                        <div class="form-group">
-                            <label>Комментарий / требования</label>
-                            <textarea rows="2" id="comment" name="comment" placeholder="Ежедневная уборка, паркет, нужны эко-средства..."></textarea>
-                        </div>
-                        <button type="submit" class="btn" style="width: 100%; justify-content: center;"><i class="fas fa-paper-plane"></i> Отправить заявку</button>
-                        <p style="font-size: 0.75rem; margin-top: 16px; text-align: center;">Нажимая на кнопку, вы соглашаетесь с обработкой данных.</p>
-                    </form>
-                    <div id="formStatus" style="margin-top: 16px;"></div>
-                    <!-- КОНЕЦ ФОРМЫ -->
-                </div>
+                
+              <section class="contact-form">
+        <h2>Оставьте заявку</h2>
+        <p>Мы перезвоним в течение 30 минут и рассчитаем стоимость под ваш офис.</p>
+        
+        <form id="contactForm" action="https://formspree.io/f/xzdkqjpl" method="POST">
+            <div class="form-group">
+                <label for="name">Ваше имя</label>
+                <input type="text" id="name" name="name" required>
             </div>
-        </div>
-    </div>
-</main>
-
-<footer class="footer">
-    <div class="container">
-        <p>© 2004–2026 «Офис-Комфорт» — профессиональная уборка офисов с индивидуальным подходом.</p>
-        <p style="margin-top: 12px; font-size: 0.85rem;">Создаём чистоту для вашего бизнеса в Москве и области.</p>
-    </div>
-</footer>
-
-
-    <!-- JavaScript для дополнительной валидации (опционально) -->
+            
+            <div class="form-group">
+                <label for="contact">Телефон или Email</label>
+                <input type="text" id="contact" name="contact" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="area">Площадь офиса (м²)</label>
+                <input type="number" id="area" name="area" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Комментарий / требования</label>
+                <textarea id="message" name="message"></textarea>
+            </div>
+            
+            <button type="submit">Отправить заявку</button>
+            <p class="privacy">Нажимая на кнопку, вы соглашаетесь с обработкой данных.</p>
+        </form>
+    </section>
+ <!-- JavaScript для дополнительной валидации (опционально) -->
     <script>
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -510,5 +499,17 @@
             });
         });
     </script>
+                
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <p>© 2004–2026 «Офис-Комфорт» — профессиональная уборка офисов с индивидуальным подходом.</p>
+        <p style="margin-top: 12px; font-size: 0.85rem;">Создаём чистоту для вашего бизнеса в Москве и области.</p>
+    </div>
+</footer>
 </body>
 </html>
