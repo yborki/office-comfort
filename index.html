@@ -316,22 +316,107 @@
             font-size: 1.1rem;
         }
 
-        .timeline-item .description br {
-            display: none;
+        /* Стили для кнопки просмотра письма */
+        .btn-view-letter {
+            background: var(--primary-light);
+            border: none;
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 12px;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        @media (max-width: 700px) {
-            .timeline::before {
-                left: 80px;
+        .btn-view-letter:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Модальное окно */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 500px;
+            width: 90%;
+            border-radius: 28px;
+            padding: 30px;
+            position: relative;
+            box-shadow: var(--shadow-md);
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
             }
-            .year {
-                width: 70px;
-                font-size: 1.2rem;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
-            .timeline-item .description {
-                margin-left: 40px;
-                padding: 15px 20px;
-            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: var(--text-soft);
+            transition: color 0.2s;
+        }
+
+        .modal-close:hover {
+            color: var(--primary);
+        }
+
+        .modal-content h3 {
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-align: center;
+        }
+
+        .modal-image-placeholder {
+            background: var(--gray-light);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            margin: 15px 0;
+            border: 1px dashed var(--primary);
+        }
+
+        .modal-image-placeholder img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .modal-note {
+            background: var(--primary-light);
+            padding: 12px 16px;
+            border-radius: 16px;
+            font-size: 0.85rem;
+            color: var(--text-dark);
+            margin-top: 15px;
         }
 
         .contact-grid {
@@ -417,6 +502,20 @@
             .section { padding: 56px 0; }
             .price-highlight { font-size: 2.5rem; }
         }
+
+        @media (max-width: 700px) {
+            .timeline::before {
+                left: 80px;
+            }
+            .year {
+                width: 70px;
+                font-size: 1.2rem;
+            }
+            .timeline-item .description {
+                margin-left: 40px;
+                padding: 15px 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -501,7 +600,16 @@
                     <div class="year">2010</div>
                     <div class="description">
                         <strong>Период активного роста</strong>
-                        Работа с клиентами в деловых районах Москвы, увеличение команды специалистов, внедрение современных технологий уборки.
+                        Работа с клиентами в деловых районах Москвы, увеличение команды специалистов.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="year">2015</div>
+                    <div class="description">
+                        <strong>Работа с Посольством Австралии</strong>
+                        Выполнили комплексную уборку помещений Посольства Австралии в Москве. Получили официальную благодарность за профессионализм и внимание к деталям.
+                        <button class="btn-view-letter" data-modal="australia-letter">📜 Посмотреть благодарность</button>
                     </div>
                 </div>
                 
@@ -509,7 +617,7 @@
                     <div class="year">2020</div>
                     <div class="description">
                         <strong>Ребрендинг в «Офис-Комфорт»</strong>
-                        Обновление бренда, фокусировка на корпоративных клиентах, внедрение новых стандартов качества.
+                        Обновление бренда, фокусировка на корпоративных клиентах. Старое название «Чистюля» уходит в историю, но команда и стандарты качества остаются прежними.
                     </div>
                 </div>
                 
@@ -517,7 +625,7 @@
                     <div class="year">2024</div>
                     <div class="description">
                         <strong>20 лет на рынке</strong>
-                        Юбилей компании. Успешное обслуживание корпоративных клиентов, команда специалистов, безупречная репутация.
+                        Юбилей компании. Успешное обслуживание 500+ корпоративных клиентов, команда специалистов, безупречная репутация.
                     </div>
                 </div>
             </div>
@@ -606,40 +714,88 @@
     </div>
 </footer>
 
-<!-- СКРИПТ ДЛЯ ОТПРАВКИ ФОРМЫ (Formspree) -->
+<!-- МОДАЛЬНОЕ ОКНО ДЛЯ ПИСЬМА ПОСОЛЬСТВА АВСТРАЛИИ -->
+<div id="modal-australia" class="modal">
+    <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <h3>Благодарность от Посольства Австралии</h3>
+        
+        <!-- Изображение письма -->
+        <div class="modal-image-placeholder">
+            <img src="letter-australia.jpg" alt="Благодарственное письмо от Посольства Австралии" style="max-width: 100%; border-radius: 12px;">
+        </div>
+        
+        <div class="modal-note">
+            📌 Компания продолжила работу под брендом «Офис-Комфорт». Оригинал письма предоставляется по запросу.
+        </div>
+    </div>
+</div>
+
+<!-- СКРИПТ ДЛЯ ОТПРАВКИ ФОРМЫ (Formspree) И МОДАЛЬНОГО ОКНА -->
 <script>
+    // === ОБРАБОТКА ФОРМЫ ===
     const form = document.getElementById('callbackForm');
     const statusDiv = document.getElementById('formStatus');
 
-    form.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        statusDiv.innerHTML = '<div style="background:#e3f2fd; padding:12px; border-radius:28px;">⏳ Отправляем...</div>';
-        
-        const formData = new FormData(form);
-        
-        try {
-            const response = await fetch(form.action, {
-                method: 'POST',
-                body: new URLSearchParams(formData).toString(),
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            });
+    if (form) {
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
             
-            if (response.ok) {
-                statusDiv.innerHTML = '<div style="background:#1e88e5; color:white; padding:12px; border-radius:28px;">✅ Спасибо! Менеджер свяжется с вами в ближайшее время.</div>';
-                form.reset();
-            } else {
-                statusDiv.innerHTML = '<div style="background:#fee2e2; color:#b91c1c; padding:12px; border-radius:28px;">❌ Ошибка отправки. Попробуйте позвонить по телефону.</div>';
+            statusDiv.innerHTML = '<div style="background:#e3f2fd; padding:12px; border-radius:28px;">⏳ Отправляем...</div>';
+            
+            const formData = new FormData(form);
+            
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new URLSearchParams(formData).toString(),
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                });
+                
+                if (response.ok) {
+                    statusDiv.innerHTML = '<div style="background:#1e88e5; color:white; padding:12px; border-radius:28px;">✅ Спасибо! Менеджер свяжется с вами в ближайшее время.</div>';
+                    form.reset();
+                } else {
+                    statusDiv.innerHTML = '<div style="background:#fee2e2; color:#b91c1c; padding:12px; border-radius:28px;">❌ Ошибка отправки. Попробуйте позвонить по телефону.</div>';
+                }
+            } catch (error) {
+                statusDiv.innerHTML = '<div style="background:#fee2e2; color:#b91c1c; padding:12px; border-radius:28px;">❌ Ошибка соединения. Попробуйте позвонить по телефону.</div>';
             }
-        } catch (error) {
-            statusDiv.innerHTML = '<div style="background:#fee2e2; color:#b91c1c; padding:12px; border-radius:28px;">❌ Ошибка соединения. Попробуйте позвонить по телефону.</div>';
+            
+            setTimeout(() => {
+                if(statusDiv.firstChild) statusDiv.innerHTML = '';
+            }, 5000);
+        });
+    }
+
+    // === МОДАЛЬНОЕ ОКНО ДЛЯ ПИСЬМА ===
+    const modalAustralia = document.getElementById('modal-australia');
+    const btnAustralia = document.querySelector('[data-modal="australia-letter"]');
+    const closeBtn = document.querySelector('#modal-australia .modal-close');
+    
+    if (btnAustralia) {
+        btnAustralia.addEventListener('click', function() {
+            if (modalAustralia) {
+                modalAustralia.style.display = 'flex';
+            }
+        });
+    }
+    
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function() {
+            if (modalAustralia) {
+                modalAustralia.style.display = 'none';
+            }
+        });
+    }
+    
+    // Закрытие по клику вне окна
+    window.addEventListener('click', function(event) {
+        if (event.target === modalAustralia) {
+            modalAustralia.style.display = 'none';
         }
-        
-        setTimeout(() => {
-            if(statusDiv.firstChild) statusDiv.innerHTML = '';
-        }, 5000);
     });
 </script>
 
