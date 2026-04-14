@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Офис-Комфорт | Профессиональная уборка офисов с 2004 года</title>
@@ -29,6 +30,48 @@
             margin: 0 auto;
             padding: 0 24px;
         }
+
+         .contact-section {
+            padding: 40px 0;
+            background: #f8f9fa;
+        }
+
+        .form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.privacy {
+    margin-top: 15px;
+    font-size: 0.9em;
+    color: #666;
+}
 
         /* ГОЛУБАЯ ЦВЕТОВАЯ ГАММА */
         :root {
@@ -609,7 +652,7 @@
                     <div class="description">
                         <strong>Работа с Посольством Австралии</strong>
                         Выполнили комплексную уборку помещений Посольства Австралии в Москве. Получили официальную благодарность за профессионализм и внимание к деталям.
-                        <button class="btn-view-letter" data-modal="australia-letter">📜 Посмотреть благодарность</button>
+                        <button class="btn-view-letter" data-modal="australia-letter">Посмотреть благодарность</button>
                     </div>
                 </div>
                 
@@ -676,32 +719,61 @@
                         <p><i class="fas fa-star"></i> <strong>Бесплатный выезд специалиста</strong> для составления точной сметы.</p>
                     </div>
                 </div>
-                <div class="contact-form" id="contact-form">
-                    <h3 style="margin-bottom: 1rem;">Оставьте заявку</h3>
-                    <p style="margin-bottom: 1.5rem; color: var(--text-soft);">Мы перезвоним в течение 30 минут и рассчитаем стоимость под ваш офис.</p>
-                    
-                    <form id="callbackForm" action="https://formspree.io/f/xzdkqjpl" method="POST">
-                        <div class="form-group">
-                            <label>Ваше имя</label>
-                            <input type="text" id="name" name="name" placeholder="Анна Смирнова" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Телефон или Email</label>
-                            <input type="text" id="contactInfo" name="contact" placeholder="+7 (999) 123-45-67" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Площадь офиса (м²)</label>
-                            <input type="number" id="area" name="area" placeholder="Например, 85">
-                        </div>
-                        <div class="form-group">
-                            <label>Комментарий / требования</label>
-                            <textarea rows="2" id="comment" name="message" placeholder="Ежедневная уборка, паркет, нужны эко-средства..."></textarea>
-                        </div>
-                        <button type="submit" class="btn" style="width: 100%; justify-content: center;"><i class="fas fa-paper-plane"></i> Отправить заявку</button>
-                        <p style="font-size: 0.75rem; margin-top: 16px; text-align: center;">Нажимая на кнопку, вы соглашаетесь с обработкой данных.</p>
-                    </form>
-                    <div id="formStatus" style="margin-top: 16px;"></div>
-                </div>
+                <!-- Раздел обратной связи -->
+<section class="contact-section">
+    <h2>Оставьте заявку</h2>
+    <p>Мы перезвоним в течение 30 минут и рассчитаем стоимость под ваш офис.</p>
+
+    <form id="contactForm" action="https://formspree.io/f/xzdkqjpl" method="POST">
+        <div class="form-group">
+            <label for="name">Ваше имя</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="contact">Телефон или Email</label>
+            <input type="text" id="contact" name="contact" required>
+        </div>
+
+        <div class="form-group">
+            <label for="area">Площадь офиса (м²)</label>
+            <input type="number" id="area" name="area" required>
+        </div>
+
+        <div class="form-group">
+            <label for="message">Комментарий / требования</label>
+            <textarea id="message" name="message"></textarea>
+        </div>
+
+        <button type="submit">Отправить заявку</button>
+        <p class="privacy">Нажимая на кнопку, вы соглашаетесь с обработкой данных.</p>
+    </form>
+</section>
+
+<!-- JavaScript для обработки формы -->
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const form = this;
+    const formData = new FormData(form);
+    
+    fetch(form.action, {
+        method: form.method,
+        body: new URLSearchParams(formData).toString()
+    })
+    .then(response => response.ok ? response.text() : Promise.reject(response))
+    .then(data => {
+        alert('Заявка отправлена успешно!');
+        form.reset();
+    })
+    .catch(error => {
+        console.error('Ошибка отправки:', error);
+        alert('Произошла ошибка при отправке формы. Попробуйте позже.');
+    });
+});
+</script>
+
             </div>
         </div>
     </div>
