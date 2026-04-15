@@ -476,26 +476,27 @@
                 <div class="contact-form" id="contact-form">
                     <h3 style="margin-bottom: 1rem;">Оставьте заявку</h3>
                     <p style="margin-bottom: 1.5rem; color: var(--text-soft);">Мы перезвоним в течение 30 минут и рассчитаем стоимость под ваш офис.</p>
-                    <form id="callbackForm" action="https://formspree.io/f/xzdkqjpl" method="POST">
-                        <div class="form-group">
-                            <label>Ваше имя</label>
-                            <input type="text" name="name" placeholder="Анна Смирнова" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Телефон или Email</label>
-                            <input type="text" name="contactInfo" placeholder="+7 (999) 123-45-67" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Площадь офиса (м²)</label>
-                            <input type="number" name="area" placeholder="Например, 85">
-                        </div>
-                        <div class="form-group">
-                            <label>Комментарий / требования</label>
-                            <textarea rows="2" name="comment" placeholder="Ежедневная уборка, паркет, нужны эко-средства..."></textarea>
-                        </div>
-                        <button type="submit" class="btn" style="width: 100%; justify-content: center;"><i class="fas fa-paper-plane"></i> Отправить заявку</button>
-                        <p style="font-size: 0.75rem; margin-top: 16px; text-align: center;">Нажимая на кнопку, вы соглашаетесь с обработкой данных.</p>
-                    </form>
+                    <form id="callbackForm">
+    <div class="form-group">
+        <label>Ваше имя</label>
+        <input type="text" name="name" placeholder="Анна Смирнова" required>
+    </div>
+    <div class="form-group">
+        <label>Телефон или Email</label>
+        <input type="text" name="contactInfo" placeholder="+7 (999) 123-45-67" required>
+    </div>
+    <div class="form-group">
+        <label>Площадь офиса (м²)</label>
+        <input type="number" name="area" placeholder="Например, 85">
+    </div>
+    <div class="form-group">
+        <label>Комментарий / требования</label>
+        <textarea rows="2" name="comment" placeholder="Ежедневная уборка, паркет, нужны эко-средства..."></textarea>
+    </div>
+    <button type="submit" class="btn" style="width: 100%; justify-content: center;"><i class="fas fa-paper-plane"></i> Отправить заявку</button>
+    <p style="font-size: 0.75rem; margin-top: 16px; text-align: center;">Нажимая на кнопку, вы соглашаетесь с обработкой данных.</p>
+</form>
+<div id="formStatus" style="margin-top: 16px;"></div>
                     <div id="formStatus" style="margin-top: 16px;"></div>
                 </div>
             </div>
@@ -511,37 +512,46 @@
 </footer>
 
 <script>
+    const form = document.getElementById('callbackForm');
+    const statusDiv = document.getElementById('formStatus');
+
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
-      const data = {
-        name: document.getElementById('name').value,
-        contact: document.getElementById('contactInfo').value,
-        area: document.getElementById('area').value,
-        comment: document.getElementById('comment').value
-    };
+        
+        const name = form.querySelector('[name="name"]').value.trim();
+        const contact = form.querySelector('[name="contactInfo"]').value.trim();
+        
+        if (!name || !contact) {
+            statusDiv.innerHTML = '<div style="background:#fee2e2; color:#b91c1c; padding:12px; border-radius:28px;">❌ Заполните имя и контакт</div>';
+            return;
+        }
+        
+        statusDiv.innerHTML = '<div style="background:#e3f2fd; padding:12px; border-radius:28px;">⏳ Отправляем...</div>';
+        
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('contact', contact);
+        formData.append('area', form.querySelector('[name="area"]').value);
+        formData.append('message', form.querySelector('[name="comment"]').value);
+        
         try {
-        const response = await fetch("https://formspree.io/f/xzdkqjpl", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-             });
-        if(response.ok) {
-            statusDiv.innerHTML = '<div class="success-message" style="background:#fee2e2; color:#b91c1c;">✅ Спасибо! Менеджер свяжется с вами в ближайшее время и рассчитает точную стоимость уборки.</div>';
-            form.reset();
-        setTimeout(() => {
-            if(statusDiv.firstChild) statusDiv.innerHTML = '';
-        }, 5000);
-        } else {
-            statusDiv.innerHTML = '<div class="success-message">❌ Ошибка отправки.</div>';
-        setTimeout(() => {
-            if(statusDiv.firstChild) statusDiv.innerHTML = '';
-        }, 5000);
-        }
+            const response = await fetch('https://formspree.io/f/xzdkqjpl', {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            });
+            
+            if (response.ok) {
+                statusDiv.innerHTML = '<div style="background:#1e88e5; color:white; padding:12px; border-radius:28px;">✅ Спасибо! Мы свяжемся с вами.</div>';
+                form.reset();
+            } else {
+                statusDiv.innerHTML = '<div style="background:#fee2e2; color:#b91c1c; padding:12px; border-radius:28px;">❌ Ошибка. Попробуйте позвонить.</div>';
+            }
         } catch (error) {
-            statusDiv.innerHTML = '<div class="success-message">❌ Ошибка сети.</div>';
+            statusDiv.innerHTML = '<div style="background:#fee2e2; color:#b91c1c; padding:12px; border-radius:28px;">❌ Ошибка соединения.</div>';
         }
+        
+        setTimeout(() => { statusDiv.innerHTML = ''; }, 5000);
     });
 </script>
 </body>
