@@ -34,13 +34,14 @@
 
         /* Светлая, свежая цветовая гамма */
         :root {
-            --primary: #2b7a4b;      /* мягкий зелёный — свежесть */
-            --primary-light: #e0f2e9;
-            --accent: #5e9b8c;       /* мятный акцент */
-            --gray-light: #f9fafb;
-            --gray-mid: #eef2f6;
+            --primary: #1e88e5;        /* основной голубой */
+            --primary-dark: #1565c0;   /* тёмно-голубой для hover */
+            --primary-light: #e3f2fd;  /* очень светлый голубой для фона */
+            --accent: #42a5f5;         /* акцентный голубой */
+            --gray-light: #f5f9ff;     /* чуть голубоватый светлый */
+            --gray-mid: #eef2f8;
             --text-dark: #1f2a3e;
-            --text-soft: #4a5b6e;
+            --text-soft: #546e7a;
             --white: #ffffff;
             --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
             --shadow-md: 0 20px 25px -12px rgba(0, 0, 0, 0.08);
@@ -91,7 +92,7 @@
         }
 
         .btn:hover {
-            background-color: #1e5f3b;
+            background-color: var(--primary-dark);
             transform: translateY(-2px);
             box-shadow: var(--shadow-md);
         }
@@ -191,7 +192,7 @@
 
         .hero-image {
             flex: 1;
-            background: linear-gradient(145deg, #eafaf3, #ffffff);
+            background: linear-gradient(145deg, #e8f4fd, #ffffff);
             border-radius: 40px;
             padding: 20px;
             text-align: center;
@@ -332,7 +333,7 @@
 
         /* Футер */
         .footer {
-            background: #1f2a3e;
+            background: #1a2a3a;
             color: #cbd5e1;
             padding: 40px 0;
             text-align: center;
