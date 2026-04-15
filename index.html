@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Офис-Комфорт | Профессиональная уборка офисов с 2004 года</title>
     <meta name="description" content="Ежедневная уборка офисов в Москве. Индивидуальный подход, опыт 20+ лет. Прозрачные цены от 2500 руб. Оставьте заявку на расчет стоимости.">
+    <!-- Предзагрузка шрифтов и стилей -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (бесплатные иконки) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -30,10 +32,11 @@
             padding: 0 24px;
         }
 
+        /* Светлая, свежая цветовая гамма */
         :root {
-            --primary: #2b7a4b;
+            --primary: #2b7a4b;      /* мягкий зелёный — свежесть */
             --primary-light: #e0f2e9;
-            --accent: #5e9b8c;
+            --accent: #5e9b8c;       /* мятный акцент */
             --gray-light: #f9fafb;
             --gray-mid: #eef2f6;
             --text-dark: #1f2a3e;
@@ -43,6 +46,7 @@
             --shadow-md: 0 20px 25px -12px rgba(0, 0, 0, 0.08);
         }
 
+        /* Типографика */
         h1, h2, h3 {
             font-weight: 600;
             letter-spacing: -0.02em;
@@ -68,6 +72,7 @@
             background-color: var(--gray-light);
         }
 
+        /* Кнопки */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -103,6 +108,7 @@
             transform: translateY(-2px);
         }
 
+        /* Шапка */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -140,6 +146,7 @@
             color: var(--primary);
         }
 
+        /* Hero секция */
         .hero {
             display: flex;
             flex-wrap: wrap;
@@ -196,6 +203,7 @@
             opacity: 0.7;
         }
 
+        /* Карточки преимуществ */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -227,6 +235,7 @@
             color: var(--text-soft);
         }
 
+        /* Прайс-блок (минимальная стоимость) */
         .price-card {
             max-width: 600px;
             margin: 0 auto;
@@ -253,6 +262,7 @@
             font-size: 0.9rem;
         }
 
+        /* Форма связи */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -320,6 +330,7 @@
             margin-bottom: 8px;
         }
 
+        /* Футер */
         .footer {
             background: #1f2a3e;
             color: #cbd5e1;
@@ -327,6 +338,7 @@
             text-align: center;
         }
 
+        /* Адаптив */
         @media (max-width: 800px) {
             h1 { font-size: 2.4rem; }
             .hero { flex-direction: column; text-align: center; }
@@ -335,6 +347,16 @@
             .navbar { flex-direction: column; }
             .section { padding: 56px 0; }
             .price-highlight { font-size: 2.5rem; }
+        }
+
+        /* сообщение об успехе */
+        .success-message {
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 12px;
+            border-radius: 32px;
+            text-align: center;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -355,6 +377,7 @@
 </header>
 
 <main>
+    <!-- Hero секция -->
     <div class="container">
         <div class="hero">
             <div class="hero-content">
@@ -370,10 +393,12 @@
             </div>
             <div class="hero-image">
                 <i class="fas fa-chalkboard-user"></i>
+                <!-- декоративная иконка вместо фото, создаёт лёгкость -->
             </div>
         </div>
     </div>
 
+    <!-- Преимущества -->
     <div class="section-bg-light" id="advantages">
         <div class="container">
             <h2>Почему «Офис-Комфорт»?</h2>
@@ -402,6 +427,7 @@
         </div>
     </div>
 
+    <!-- Блок минимальной цены -->
     <div class="container" id="price">
         <div class="section" style="padding-bottom: 40px;">
             <h2>Стоимость уборки офиса</h2>
@@ -421,6 +447,7 @@
         </div>
     </div>
 
+    <!-- Контакты + форма -->
     <div class="section-bg-light" id="contact">
         <div class="container">
             <h2>Свяжитесь с нами</h2>
@@ -446,60 +473,31 @@
                         <p><i class="fas fa-star"></i> <strong>Бесплатный выезд специалиста</strong> для составления точной сметы.</p>
                     </div>
                 </div>
-                
-              <section class="contact-form">
-        <h2>Оставьте заявку</h2>
-        <p>Мы перезвоним в течение 30 минут и рассчитаем стоимость под ваш офис.</p>
-        
-        <form id="contactForm" action="https://formspree.io/f/xzdkqjpl" method="POST">
-            <div class="form-group">
-                <label for="name">Ваше имя</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="contact">Телефон или Email</label>
-                <input type="text" id="contact" name="contact" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="area">Площадь офиса (м²)</label>
-                <input type="number" id="area" name="area" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="message">Комментарий / требования</label>
-                <textarea id="message" name="message"></textarea>
-            </div>
-            
-            <button type="submit">Отправить заявку</button>
-            <p class="privacy">Нажимая на кнопку, вы соглашаетесь с обработкой данных.</p>
-        </form>
-    </section>
- <!-- JavaScript для дополнительной валидации (опционально) -->
-    <script>
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const form = this;
-            const formData = new FormData(form);
-            
-            fetch(form.action, {
-                method: form.method,
-                body: new URLSearchParams(formData).toString()
-            })
-            .then(response => response.ok ? response.text() : Promise.reject(response))
-            .then(data => {
-                alert('Заявка отправлена успешно!');
-                form.reset();
-            })
-            .catch(error => {
-                console.error('Ошибка отправки:', error);
-                alert('Произошла ошибка при отправке формы. Попробуйте позже.');
-            });
-        });
-    </script>
-                
+                <div class="contact-form" id="contact-form">
+                    <h3 style="margin-bottom: 1rem;">Оставьте заявку</h3>
+                    <p style="margin-bottom: 1.5rem; color: var(--text-soft);">Мы перезвоним в течение 30 минут и рассчитаем стоимость под ваш офис.</p>
+                    <form id="callbackForm" action="https://formspree.io/f/xzdkqjpl" method="POST">
+                        <div class="form-group">
+                            <label>Ваше имя</label>
+                            <input type="text" id="name" placeholder="Анна Смирнова" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Телефон или Email</label>
+                            <input type="text" id="contactInfo" placeholder="+7 (999) 123-45-67" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Площадь офиса (м²)</label>
+                            <input type="number" id="area" placeholder="Например, 85">
+                        </div>
+                        <div class="form-group">
+                            <label>Комментарий / требования</label>
+                            <textarea rows="2" id="comment" placeholder="Ежедневная уборка, паркет, нужны эко-средства..."></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%; justify-content: center;"><i class="fas fa-paper-plane"></i> Отправить заявку</button>
+                        <p style="font-size: 0.75rem; margin-top: 16px; text-align: center;">Нажимая на кнопку, вы соглашаетесь с обработкой данных.</p>
+                    </form>
+                    <div id="formStatus" style="margin-top: 16px;"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -507,9 +505,32 @@
 
 <footer class="footer">
     <div class="container">
-        <p>© 2004–2026 «Офис-Комфорт» — профессиональная уборка офисов с индивидуальным подходом.</p>
+        <p>© 2004–2025 «Офис-Комфорт» — профессиональная уборка офисов с индивидуальным подходом.</p>
         <p style="margin-top: 12px; font-size: 0.85rem;">Создаём чистоту для вашего бизнеса в Москве и области.</p>
     </div>
 </footer>
+
+<script>
+    // Простая обработка формы без реальной отправки на сервер (демо)
+    const form = document.getElementById('callbackForm');
+    const statusDiv = document.getElementById('formStatus');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const contact = document.getElementById('contactInfo').value.trim();
+        if(!name || !contact) {
+            statusDiv.innerHTML = '<div class="success-message" style="background:#fee2e2; color:#b91c1c;">❌ Пожалуйста, заполните имя и контактные данные.</div>';
+            return;
+        }
+        // Имитация отправки
+        statusDiv.innerHTML = '<div class="success-message">✅ Спасибо! Менеджер свяжется с вами в ближайшее время и рассчитает точную стоимость уборки.</div>';
+        form.reset();
+        // можно через пару секунд убрать сообщение, но для удобства оставим
+        setTimeout(() => {
+            if(statusDiv.firstChild) statusDiv.innerHTML = '';
+        }, 5000);
+    });
+</script>
 </body>
 </html>
