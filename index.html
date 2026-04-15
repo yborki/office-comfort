@@ -479,19 +479,19 @@
                     <form id="callbackForm" action="https://formspree.io/f/xzdkqjpl" method="POST">
                         <div class="form-group">
                             <label>Ваше имя</label>
-                            <input type="text" id="name" placeholder="Анна Смирнова" required>
+                            <input type="text" name="name" placeholder="Анна Смирнова" required>
                         </div>
                         <div class="form-group">
                             <label>Телефон или Email</label>
-                            <input type="text" id="contactInfo" placeholder="+7 (999) 123-45-67" required>
+                            <input type="text" name="contactInfo" placeholder="+7 (999) 123-45-67" required>
                         </div>
                         <div class="form-group">
                             <label>Площадь офиса (м²)</label>
-                            <input type="number" id="area" placeholder="Например, 85">
+                            <input type="number" name="area" placeholder="Например, 85">
                         </div>
                         <div class="form-group">
                             <label>Комментарий / требования</label>
-                            <textarea rows="2" id="comment" placeholder="Ежедневная уборка, паркет, нужны эко-средства..."></textarea>
+                            <textarea rows="2" name="comment" placeholder="Ежедневная уборка, паркет, нужны эко-средства..."></textarea>
                         </div>
                         <button type="submit" class="btn" style="width: 100%; justify-content: center;"><i class="fas fa-paper-plane"></i> Отправить заявку</button>
                         <p style="font-size: 0.75rem; margin-top: 16px; text-align: center;">Нажимая на кнопку, вы соглашаетесь с обработкой данных.</p>
@@ -505,31 +505,43 @@
 
 <footer class="footer">
     <div class="container">
-        <p>© 2004–2025 «Офис-Комфорт» — профессиональная уборка офисов с индивидуальным подходом.</p>
+        <p>© 2004–2026 «Офис-Комфорт» — профессиональная уборка офисов с индивидуальным подходом.</p>
         <p style="margin-top: 12px; font-size: 0.85rem;">Создаём чистоту для вашего бизнеса в Москве и области.</p>
     </div>
 </footer>
 
 <script>
-    // Простая обработка формы без реальной отправки на сервер (демо)
-    const form = document.getElementById('callbackForm');
-    const statusDiv = document.getElementById('formStatus');
-
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', async function(e) {
         e.preventDefault();
-        const name = document.getElementById('name').value.trim();
-        const contact = document.getElementById('contactInfo').value.trim();
-        if(!name || !contact) {
-            statusDiv.innerHTML = '<div class="success-message" style="background:#fee2e2; color:#b91c1c;">❌ Пожалуйста, заполните имя и контактные данные.</div>';
-            return;
-        }
-        // Имитация отправки
-        statusDiv.innerHTML = '<div class="success-message">✅ Спасибо! Менеджер свяжется с вами в ближайшее время и рассчитает точную стоимость уборки.</div>';
-        form.reset();
-        // можно через пару секунд убрать сообщение, но для удобства оставим
+      const data = {
+        name: document.getElementById('name').value,
+        contact: document.getElementById('contactInfo').value,
+        area: document.getElementById('area').value,
+        comment: document.getElementById('comment').value
+    };
+        try {
+        const response = await fetch("https://formspree.io/f/xzdkqjpl", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+             });
+        if(response.ok) {
+            statusDiv.innerHTML = '<div class="success-message" style="background:#fee2e2; color:#b91c1c;">✅ Спасибо! Менеджер свяжется с вами в ближайшее время и рассчитает точную стоимость уборки.</div>';
+            form.reset();
         setTimeout(() => {
             if(statusDiv.firstChild) statusDiv.innerHTML = '';
         }, 5000);
+        } else {
+            statusDiv.innerHTML = '<div class="success-message">❌ Ошибка отправки.</div>';
+        setTimeout(() => {
+            if(statusDiv.firstChild) statusDiv.innerHTML = '';
+        }, 5000);
+        }
+        } catch (error) {
+            statusDiv.innerHTML = '<div class="success-message">❌ Ошибка сети.</div>';
+        }
     });
 </script>
 </body>
