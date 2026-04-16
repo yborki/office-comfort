@@ -545,7 +545,7 @@
                 <div class="description">
                     <strong>Работа с Посольством Австралии</strong><br>
                     Выполнили комплексную уборку помещений Посольства Австралии в Москве. Получили официальную благодарность за профессионализм и внимание к деталям.
-                    <button class="btn-view-letter" data-modal="australia-letter">📜 Посмотреть благодарность</button>
+                    <button class="btn-view-letter" data-modal="australia-letter"> Посмотреть благодарность</button>
                 </div>
             </div>
 
@@ -652,6 +652,34 @@
     </div>
 </footer>
 
+        <!-- ========== МОДАЛЬНОЕ ОКНО ========== -->
+    <div id="modal-australia" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h3>Благодарность от Посольства Австралии</h3>
+            <div class="modal-image-placeholder">
+                <img src="letter-australia.jpg" alt="Благодарственное письмо" style="max-width: 100%; border-radius: 12px;">
+            </div>
+            <div class="modal-note">
+                📌 Компания продолжила работу под брендом «Офис-Комфорт». Оригинал письма предоставляется по запросу.
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== СКРИПТЫ ========== -->
+    <script>
+        // Скрипт для работы модального окна
+        const modal = document.getElementById('modal-australia');
+        const btn = document.querySelector('[data-modal="australia-letter"]');
+        const close = document.querySelector('#modal-australia .modal-close');
+
+        if (btn) {
+            btn.addEventListener('click', () => modal.style.display = 'flex');
+            close.addEventListener('click', () => modal.style.display = 'none');
+            window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
+        }
+    </script>
+    
 <script>
     const form = document.getElementById('callbackForm');
     const statusDiv = document.getElementById('formStatus');
