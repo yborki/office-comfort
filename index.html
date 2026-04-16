@@ -359,6 +359,102 @@
             text-align: center;
             margin-top: 20px;
         }
+        
+/* Стили для блока истории */
+.company-history {
+    padding: 80px 0;
+    background-color: var(--gray-light);
+}
+
+.timeline {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    padding: 20px 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 120px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--primary-light);
+}
+
+.timeline-item {
+    display: flex;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.year {
+    width: 100px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    padding-top: 5px;
+    flex-shrink: 0;
+}
+
+.timeline-item .description {
+    margin-left: 60px;
+    background: white;
+    padding: 20px 28px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-sm);
+    flex: 1;
+    transition: transform 0.2s;
+}
+
+.timeline-item .description:hover {
+    transform: translateX(5px);
+    box-shadow: var(--shadow-md);
+}
+
+.timeline-item .description strong {
+    color: var(--primary);
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+.btn-view-letter {
+    background: var(--primary-light);
+    border: none;
+    color: var(--primary);
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-view-letter:hover {
+    background: var(--primary);
+    color: white;
+}
+
+@media (max-width: 700px) {
+    .timeline::before {
+        left: 80px;
+    }
+    .year {
+        width: 70px;
+        font-size: 1.2rem;
+    }
+    .timeline-item .description {
+        margin-left: 40px;
+        padding: 15px 20px;
+    }
+}
+        
     </style>
 </head>
 <body>
@@ -415,11 +511,6 @@
                     <p>Подбираем график, инвентарь и средства под особенности вашего офиса и требования.</p>
                 </div>
                 <div class="feature-card">
-                    <i class="fas fa-clock"></i>
-                    <h3>Ежедневная уборка</h3>
-                    <p>Утром офис встречает сотрудников свежестью. Работаем в нерабочее время — без помех бизнесу.</p>
-                </div>
-                <div class="feature-card">
                     <i class="fas fa-file-signature"></i>
                     <h3>Прозрачный договор</h3>
                     <p>Фиксируем объёмы, сроки и стоимость. Без скрытых платежей и сюрпризов.</p>
@@ -428,6 +519,55 @@
         </div>
     </div>
 
+<!-- БЛОК: ИСТОРИЯ КОМПАНИИ (ТАЙМЛАЙН) -->
+<div class="company-history" id="history">
+    <div class="container">
+        <h2>История компании</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="year">2004</div>
+                <div class="description">
+                    <strong>Основание компании «Чистюля»</strong><br>
+                    Первый шаг в мире клининговых услуг. Начало пути с небольшой команды профессионалов.
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="year">2010</div>
+                <div class="description">
+                    <strong>Период активного роста</strong><br>
+                    Работа с клиентами в деловых районах Москвы, увеличение команды специалистов.
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="year">2015</div>
+                <div class="description">
+                    <strong>Работа с Посольством Австралии</strong><br>
+                    Выполнили комплексную уборку помещений Посольства Австралии в Москве. Получили официальную благодарность за профессионализм и внимание к деталям.
+                    <button class="btn-view-letter" data-modal="australia-letter">📜 Посмотреть благодарность</button>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="year">2020</div>
+                <div class="description">
+                    <strong>Ребрендинг в «Офис-Комфорт»</strong><br>
+                    Обновление бренда, фокусировка на корпоративных клиентах. Старое название «Чистюля» уходит в историю, но команда и стандарты качества остаются прежними.
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="year">2024</div>
+                <div class="description">
+                    <strong>20 лет на рынке</strong><br>
+                    Юбилей компании. Успешное обслуживание 500+ корпоративных клиентов, команда специалистов, безупречная репутация.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
     <!-- Блок минимальной цены -->
     <div class="container" id="price">
         <div class="section" style="padding-bottom: 40px;">
