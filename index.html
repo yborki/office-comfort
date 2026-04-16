@@ -750,10 +750,235 @@
     background: var(--primary);
 }
 
-/* Адаптивность */
-@media (max-width: 700px) {
+/* ========== ПОЛНАЯ МОБИЛЬНАЯ АДАПТАЦИЯ ========== */
+
+/* Планшеты (до 900px) */
+@media (max-width: 900px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-stats {
+        gap: 15px;
+    }
+    
+    .stat strong {
+        font-size: 1.3rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+    }
+}
+
+/* Телефоны (до 768px) */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 16px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .section {
+        padding: 40px 0;
+    }
+    
+    /* Шапка */
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .nav-links {
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .nav-links a {
+        font-size: 0.9rem;
+    }
+    
+    /* Hero секция */
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        gap: 25px;
+        padding: 10px 0 30px;
+    }
+    
+    .hero-stats {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .hero-image i {
+        font-size: 6rem;
+    }
+    
+    /* Карточки преимуществ */
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .feature-card {
+        padding: 20px 16px;
+    }
+    
+    .feature-card i {
+        font-size: 2rem;
+    }
+    
+    .feature-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    /* Блок цен */
+    .price-card {
+        padding: 25px 20px;
+    }
+    
+    .price-highlight {
+        font-size: 2rem;
+    }
+    
+    /* Контакты */
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .contact-info, .contact-form {
+        padding: 20px;
+    }
+    
+    .contact-detail {
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+    
+    .contact-detail i {
+        font-size: 1.2rem;
+        width: 40px;
+        height: 40px;
+    }
+    
+    /* Кнопки */
+    .btn {
+        padding: 12px 24px;
+        font-size: 0.9rem;
+    }
+    
+    /* Футер */
+    .footer {
+        padding: 25px 0;
+        font-size: 0.8rem;
+    }
+    
+    /* Отступы для секций (которые вы добавили) */
+    #advantages {
+        padding-top: 50px !important;
+    }
+    
+    #contact {
+        padding-top: 40px !important;
+        padding-bottom: 40px !important;
+    }
+}
+
+/* Маленькие телефоны (до 480px) */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 12px;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    h2 {
+        font-size: 1.3rem;
+    }
+    
+    .hero-badge {
+        font-size: 0.75rem;
+    }
+    
+    .hero-stats {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .stat {
+        font-size: 0.9rem;
+    }
+    
+    .stat strong {
+        font-size: 1.1rem;
+    }
+    
+    .nav-links {
+        gap: 12px;
+    }
+    
+    .nav-links a {
+        font-size: 0.75rem;
+    }
+    
+    .price-highlight {
+        font-size: 1.6rem;
+    }
+    
+    input, textarea, select {
+        padding: 10px 14px;
+        font-size: 0.9rem;
+    }
+    
+    .contact-detail div strong {
+        font-size: 0.9rem;
+    }
+    
+    .contact-detail div {
+        font-size: 0.8rem;
+    }
+    
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+    }
+    
+    .footer {
+        font-size: 0.7rem;
+        padding: 20px 0;
+    }
+}
+
+/* ========== АДАПТАЦИЯ КАРУСЕЛИ (СЛАЙДЕРА) ========== */
+@media (max-width: 768px) {
+    .mission-section {
+        padding: 40px 0;
+    }
+    
+    .mission-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 25px;
+    }
+    
     .slide {
-        padding: 30px 20px;
+        padding: 25px 15px;
     }
     
     .slide-content {
@@ -765,11 +990,26 @@
     .slide-photo {
         width: 120px;
         height: 120px;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
+    }
+    
+    .slide-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 15px;
+    }
+    
+    .slide-icon i {
+        font-size: 1.8rem;
     }
     
     .slide-text h3 {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+    
+    .slide-text p {
+        font-size: 0.95rem;
     }
     
     .director-quote p {
@@ -781,18 +1021,152 @@
         display: none;
     }
     
-    .mission-stats {
-        justify-content: center;
+    .director-sign {
+        padding-left: 0;
     }
     
-    .slider-btn {
-        width: 35px;
-        height: 35px;
-        font-size: 1rem;
+    .values-list {
+        text-align: left;
     }
     
     .value-item {
-        text-align: left;
+        font-size: 0.9rem;
+    }
+    
+    .slider-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+    
+    .prev-btn {
+        left: 5px;
+    }
+    
+    .next-btn {
+        right: 5px;
+    }
+    
+    .slider-dots {
+        margin-top: 15px;
+    }
+    
+    .dot {
+        width: 8px;
+        height: 8px;
+    }
+    
+    .dot.active {
+        width: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .slide {
+        padding: 20px 12px;
+    }
+    
+    .slide-text h3 {
+        font-size: 1.1rem;
+    }
+    
+    .slide-text p {
+        font-size: 0.85rem;
+    }
+    
+    .values-list {
+        gap: 10px;
+    }
+    
+    .value-item {
+        gap: 8px;
+        padding: 8px 0;
+    }
+    
+    .value-item i {
+        font-size: 1rem;
+        width: 20px;
+    }
+    
+    .love-quote {
+        padding: 12px;
+    }
+    
+    .love-quote p {
+        font-size: 0.85rem;
+    }
+}
+
+/* ========== АДАПТАЦИЯ ТАЙМЛАЙНА ========== */
+@media (max-width: 768px) {
+    .company-history {
+        padding: 40px 0;
+    }
+    
+    .timeline::before {
+        left: 70px;
+    }
+    
+    .year {
+        width: 60px;
+        font-size: 1rem;
+    }
+    
+    .timeline-item .description {
+        margin-left: 35px;
+        padding: 12px 16px;
+        font-size: 0.85rem;
+    }
+    
+    .timeline-item .description strong {
+        font-size: 0.95rem;
+    }
+    
+    .btn-view-letter {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .timeline::before {
+        left: 55px;
+    }
+    
+    .year {
+        width: 50px;
+        font-size: 0.85rem;
+    }
+    
+    .timeline-item .description {
+        margin-left: 25px;
+        padding: 10px 12px;
+        font-size: 0.8rem;
+    }
+}
+
+/* ========== УЛУЧШЕНИЯ ДЛЯ КАСАНИЙ НА ТЕЛЕФОНАХ ========== */
+@media (max-width: 768px) {
+    .btn, 
+    button, 
+    .nav-links a,
+    .btn-view-letter,
+    .slider-btn,
+    .dot {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    input, 
+    textarea, 
+    select {
+        font-size: 16px;
+    }
+    
+    .contact-detail {
+        min-height: 44px;
     }
 }
         .highlight {
