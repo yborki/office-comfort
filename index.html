@@ -501,7 +501,7 @@
     margin-top: 15px;
 }
 
-        /* ========== РАЗДЕЛ МИССИИ И КАРУСЕЛЬ ========== */
+/* ========== РАЗДЕЛ МИССИИ И КАРУСЕЛЬ ========== */
 .mission-section {
     padding: 80px 0;
     background: linear-gradient(135deg, #ffffff 0%, #f5f9ff 100%);
@@ -517,7 +517,7 @@
 /* Слайдер */
 .slider-container {
     position: relative;
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
     overflow: hidden;
     border-radius: 32px;
@@ -538,11 +538,29 @@
 
 .slide-content {
     display: flex;
-    gap: 30px;
-    align-items: flex-start;
+    gap: 40px;
+    align-items: center;
     flex-wrap: wrap;
 }
 
+/* Стили для фото директора (новый блок) */
+.slide-photo {
+    flex-shrink: 0;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    border: 4px solid var(--primary-light);
+}
+
+.slide-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Иконка для остальных слайдов */
 .slide-icon {
     flex-shrink: 0;
     width: 80px;
@@ -623,12 +641,12 @@
 .mission-stat {
     text-align: center;
     flex: 1;
-    min-width: 100px;
+    min-width: 140px;
 }
 
 .stat-number {
     display: block;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 700;
     color: var(--primary);
 }
@@ -663,7 +681,7 @@
     color: var(--text-dark);
 }
 
-/* Любовь к работе */
+/* Любовь к работе (без звёздочек) */
 .love-quote {
     text-align: center;
     padding: 20px;
@@ -672,10 +690,9 @@
     margin-top: 20px;
 }
 
-.love-quote i {
-    color: #ffc107;
-    font-size: 1rem;
-    margin: 0 2px;
+.love-quote p {
+    margin: 0;
+    font-style: italic;
 }
 
 /* Кнопки слайдера */
@@ -743,6 +760,12 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
+    }
+    
+    .slide-photo {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 10px;
     }
     
     .slide-text h3 {
@@ -840,7 +863,7 @@
 <div class="mission-section" id="mission">
     <div class="container">
         <h2>Наша миссия и ценности</h2>
-        <p class="mission-subtitle">ЧИСТОТА - это самое важное в жизни человека</p>
+        <p class="mission-subtitle">Чистота - одна из важнейших потребностей современного человека.</p>
         
         <div class="slider-container">
             <button class="slider-btn prev-btn" id="prevSlide">❮</button>
@@ -850,10 +873,11 @@
                 <div class="slide">
                     <div class="slide-content">
                         <div class="slide-icon">
-                            <i class="fas fa-user-tie"></i>
+                            <div class="slide-photo">
+                                <img src="director-photo.jpg" alt="Директор компании В.А. Федотов">
                         </div>
                         <div class="slide-text">
-                            <h3>Слово директора</h3>
+                            <h3> </h3>
                             <div class="director-quote">
                                 <i class="fas fa-quote-left"></i>
                                 <p>«Когда всё вокруг чисто человек обретает внутреннюю чистоту и гармонию. Он способен радоваться самым незначительным событиям вокруг: свету солнца в окне, листьям, дрожащим на легком ветерке, людям, находящимся рядом с вами, общению с этими людьми... Чистота - это Счастье!
@@ -866,24 +890,30 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- Слайд 2: Миссия -->
+                    <!-- Слайд 2: Миссия -->
                 <div class="slide">
                     <div class="slide-content">
                         <div class="slide-icon">
-                            <i class="fas fa-bullseye"></i>
+                            <i class="fas fa-heart"></i>
                         </div>
                         <div class="slide-text">
-                            <h3>Чистота внутренняя напрямую зависит от внешней</h3>
-                            <p>Когда вас окружает чистота, вы способны ясно мыслить, четко понимать, что вам необходимо сейчас и в будущем, творить с универсальной точностью. В чистоте, стоит вам только подумать и захотеть чего-либо, как это случается!</p>
-                            <div class="mission-stats">
-                                <div class="mission-stat">
-                                    <span class="stat-number">Представьте,</span>
-                                    <span class="stat-label">окно настолько чисто, что  кажется - его нет</span>
+                            <h3>Когда вокруг вас чистоты, вы способны:</h3>
+                            <div class="values-list">
+                                <div class="value-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span><strong>Ясно</strong> мыслить</span>
                                 </div>
-                                <div class="mission-stat">
-                                    <span class="stat-number">Вы становитесь</span>
-                                    <span class="stat-label">частью большего пространства, за пределами офиса</span>
+                                <div class="value-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span><strong>Четко</strong> осознавать, что вам необходимо сейчас и в будущем</span>
+                                </div>
+                                <div class="value-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span><strong>Творить</strong> с универсальной точностью</span>
+                                </div>
+                                <div class="value-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span><strong>В чистоте</strong> вы способны добиться всего, чего пожелаете</span>
                                 </div>
                             </div>
                         </div>
@@ -894,32 +924,17 @@
                 <div class="slide">
                     <div class="slide-content">
                         <div class="slide-icon">
-                            <i class="fas fa-heart"></i>
+                            <i class="fas fa-bullseye"></i>
                         </div>
                         <div class="slide-text">
-                            <h3>Наши ценности</h3>
-                            <div class="values-list">
-                                <div class="value-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span><strong>Вложить душу</strong> — наш главный девиз</span>
-                                </div>
-                                <div class="value-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span><strong>Чистота</strong> — залог счастья</span>
-                                </div>
-                                <div class="value-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span><strong>Счастье</strong> — это результат нашей работы</span>
-                                </div>
-                                <div class="value-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span><strong>Наша цель</strong> — подарить эту чистоту вам</span>
-                                </div>
-                            </div>
+                            <h3>Представьте</h3>
+                            <p>Окно настолько чисто, что кажется, его нет, и вы становитесь не ограничены пространством офиса, вы становитесь частью мира за пределами помещения. Это ощущение свободы, не так ли?</p>
+                            <h3>Чистота повсюду:</h3>
+                            <p>Полы, стены, потолки. Нет грязи, нет мусора, нет пыли. Глазу не за что зацепиться. Есть лишь чистота. Непроизвольно приходит и ощущение чистоты сознания, готовности к новым свершениям.</p>
                         </div>
                     </div>
                 </div>
-                
+            
                 <!-- Слайд 4: Почему мы любим свою работу -->
                 <div class="slide">
                     <div class="slide-content">
@@ -927,8 +942,8 @@
                             <i class="fas fa-smile-wink"></i>
                         </div>
                         <div class="slide-text">
-                            <h3>Почему мы любим свою работу</h3>
-                            <p>Потому что видим результат. Потому что клиенты говорят «спасибо». Потому что каждый офис, который мы убираем, становится лучше. Мы испытываем счастье, когда делаем мир вокруг себя чище.</p>
+                            <h3>Существует выражение «вложить душу»</h3>
+                            <p>Мы вкладываем душу в свою работу. Нам нравится наводить чистоту и порядок. Потому что клиенты говорят «спасибо». Потому что каждый офис, который мы убираем, становится лучше. Мы испытываем счастье, когда делаем мир вокруг себя чище.</p>
                             <div class="love-quote">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -1095,7 +1110,7 @@
                 <img src="letter-australia.jpg" alt="Благодарственное письмо" style="max-width: 100%; border-radius: 12px;">
             </div>
             <div class="modal-note">
-                📌 Компания продолжила работу под брендом «Офис-Комфорт». Оригинал письма предоставляется по запросу.
+                📌 Компания продолжила работу под названием «Офис-Комфорт».
             </div>
         </div>
     </div>
@@ -1157,61 +1172,45 @@
         setTimeout(() => { statusDiv.innerHTML = ''; }, 5000);
     });
 </script>
+    
     <script>
-    // ========== КАРУСЕЛЬ (СЛАЙДЕР) ==========
-    const track = document.getElementById('sliderTrack');
-    const slides = document.querySelectorAll('.slide');
-    const prevBtn = document.getElementById('prevSlide');
-    const nextBtn = document.getElementById('nextSlide');
-    const dots = document.querySelectorAll('.dot');
+// ========== КАРУСЕЛЬ (СЛАЙДЕР) — БЕЗ АВТОПРОКРУТКИ ==========
+const track = document.getElementById('sliderTrack');
+const slides = document.querySelectorAll('.slide');
+const prevBtn = document.getElementById('prevSlide');
+const nextBtn = document.getElementById('nextSlide');
+const dots = document.querySelectorAll('.dot');
+
+let currentIndex = 0;
+const totalSlides = slides.length;
+
+function updateSlider() {
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
     
-    let currentIndex = 0;
-    const totalSlides = slides.length;
-    
-    function updateSlider() {
-        track.style.transform = `translateX(-${currentIndex * 100}%)`;
-        
-        // Обновляем активную точку
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentIndex);
-        });
-    }
-    
-    function nextSlide() {
-        currentIndex = (currentIndex + 1) % totalSlides;
-        updateSlider();
-    }
-    
-    function prevSlide() {
-        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-        updateSlider();
-    }
-    
-    // Обработчики кнопок
-    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
-    
-    // Обработчики точек
     dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            currentIndex = index;
-            updateSlider();
-        });
+        dot.classList.toggle('active', index === currentIndex);
     });
-    
-    // Автоматическое перелистывание каждые 7 секунд
-    let autoplayInterval = setInterval(nextSlide, 7000);
-    
-    // Останавливаем автоперелистывание при наведении на слайдер
-    const sliderContainer = document.querySelector('.slider-container');
-    if (sliderContainer) {
-        sliderContainer.addEventListener('mouseenter', () => {
-            clearInterval(autoplayInterval);
-        });
-        sliderContainer.addEventListener('mouseleave', () => {
-            autoplayInterval = setInterval(nextSlide, 7000);
-        });
-    }
+}
+
+function nextSlide() {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateSlider();
+}
+
+function prevSlide() {
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    updateSlider();
+}
+
+if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+
+dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        currentIndex = index;
+        updateSlider();
+    });
+});
 </script>
 </body>
 </html>
