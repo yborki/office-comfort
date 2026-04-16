@@ -500,7 +500,278 @@
     font-size: 0.85rem;
     margin-top: 15px;
 }
-        
+
+        /* ========== РАЗДЕЛ МИССИИ И КАРУСЕЛЬ ========== */
+.mission-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #ffffff 0%, #f5f9ff 100%);
+}
+
+.mission-subtitle {
+    text-align: center;
+    color: var(--text-soft);
+    margin-bottom: 50px;
+    font-size: 1.1rem;
+}
+
+/* Слайдер */
+.slider-container {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 32px;
+    box-shadow: var(--shadow-md);
+    background: white;
+}
+
+.slider-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 50px 40px;
+}
+
+.slide-content {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.slide-icon {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    background: var(--primary-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide-icon i {
+    font-size: 2.5rem;
+    color: var(--primary);
+}
+
+.slide-text {
+    flex: 1;
+}
+
+.slide-text h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: var(--primary);
+}
+
+.slide-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-soft);
+    margin-bottom: 20px;
+}
+
+/* Директор */
+.director-quote {
+    position: relative;
+    padding: 20px 0;
+}
+
+.director-quote i.fa-quote-left {
+    font-size: 2rem;
+    color: var(--primary-light);
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    opacity: 0.5;
+}
+
+.director-quote p {
+    font-size: 1.2rem;
+    font-style: italic;
+    padding-left: 30px;
+}
+
+.director-sign {
+    margin-top: 20px;
+    padding-left: 30px;
+}
+
+.director-sign strong {
+    display: block;
+    color: var(--text-dark);
+}
+
+.director-sign span {
+    font-size: 0.85rem;
+    color: var(--text-soft);
+}
+
+/* Статистика миссии */
+.mission-stats {
+    display: flex;
+    gap: 30px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.mission-stat {
+    text-align: center;
+    flex: 1;
+    min-width: 100px;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: var(--text-soft);
+}
+
+/* Ценности */
+.values-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.value-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--gray-mid);
+}
+
+.value-item i {
+    color: var(--primary);
+    font-size: 1.2rem;
+    width: 24px;
+}
+
+.value-item span {
+    color: var(--text-dark);
+}
+
+/* Любовь к работе */
+.love-quote {
+    text-align: center;
+    padding: 20px;
+    background: var(--primary-light);
+    border-radius: 24px;
+    margin-top: 20px;
+}
+
+.love-quote i {
+    color: #ffc107;
+    font-size: 1rem;
+    margin: 0 2px;
+}
+
+/* Кнопки слайдера */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    color: var(--primary);
+    transition: all 0.2s;
+    z-index: 10;
+}
+
+.slider-btn:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-50%) scale(1.05);
+}
+
+.prev-btn {
+    left: 15px;
+}
+
+.next-btn {
+    right: 15px;
+}
+
+/* Индикаторы (точки) */
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background: var(--gray-mid);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.dot.active {
+    width: 25px;
+    border-radius: 10px;
+    background: var(--primary);
+}
+
+/* Адаптивность */
+@media (max-width: 700px) {
+    .slide {
+        padding: 30px 20px;
+    }
+    
+    .slide-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .slide-text h3 {
+        font-size: 1.4rem;
+    }
+    
+    .director-quote p {
+        font-size: 1rem;
+        padding-left: 0;
+    }
+    
+    .director-quote i.fa-quote-left {
+        display: none;
+    }
+    
+    .mission-stats {
+        justify-content: center;
+    }
+    
+    .slider-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .value-item {
+        text-align: left;
+    }
+}
     </style>
 </head>
 <body>
@@ -565,6 +836,123 @@
         </div>
     </div>
 
+    <!-- РАЗДЕЛ: МИССИЯ И ЦЕННОСТИ (КАРУСЕЛЬ) -->
+<div class="mission-section" id="mission">
+    <div class="container">
+        <h2>Наша миссия и ценности</h2>
+        <p class="mission-subtitle">ЧИСТОТА - это самое важное в жизни человека</p>
+        
+        <div class="slider-container">
+            <button class="slider-btn prev-btn" id="prevSlide">❮</button>
+            
+            <div class="slider-track" id="sliderTrack">
+                <!-- Слайд 1: Обращение директора -->
+                <div class="slide">
+                    <div class="slide-content">
+                        <div class="slide-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="slide-text">
+                            <h3>Слово директора</h3>
+                            <div class="director-quote">
+                                <i class="fas fa-quote-left"></i>
+                                <p>«Когда всё вокруг чисто человек обретает внутреннюю чистоту и гармонию. Он способен радоваться самым незначительным событиям вокруг: свету солнца в окне, листьям, дрожащим на легком ветерке, людям, находящимся рядом с вами, общению с этими людьми... Чистота - это Счастье!
+»</p>
+                                <div class="director-sign">
+                                    <strong>В.А. Федотов</strong>
+                                    <span>Основатель и директор компании «Офис-Комфорт»</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Слайд 2: Миссия -->
+                <div class="slide">
+                    <div class="slide-content">
+                        <div class="slide-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <div class="slide-text">
+                            <h3>Чистота внутренняя напрямую зависит от внешней</h3>
+                            <p>Когда вас окружает чистота, вы способны ясно мыслить, четко понимать, что вам необходимо сейчас и в будущем, творить с универсальной точностью. В чистоте, стоит вам только подумать и захотеть чего-либо, как это случается!</p>
+                            <div class="mission-stats">
+                                <div class="mission-stat">
+                                    <span class="stat-number">Представьте,</span>
+                                    <span class="stat-label">окно настолько чисто, что  кажется - его нет</span>
+                                </div>
+                                <div class="mission-stat">
+                                    <span class="stat-number">Вы становитесь</span>
+                                    <span class="stat-label">частью большего пространства, за пределами офиса</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Слайд 3: Ценности -->
+                <div class="slide">
+                    <div class="slide-content">
+                        <div class="slide-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="slide-text">
+                            <h3>Наши ценности</h3>
+                            <div class="values-list">
+                                <div class="value-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span><strong>Вложить душу</strong> — наш главный девиз</span>
+                                </div>
+                                <div class="value-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span><strong>Чистота</strong> — залог счастья</span>
+                                </div>
+                                <div class="value-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span><strong>Счастье</strong> — это результат нашей работы</span>
+                                </div>
+                                <div class="value-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span><strong>Наша цель</strong> — подарить эту чистоту вам</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Слайд 4: Почему мы любим свою работу -->
+                <div class="slide">
+                    <div class="slide-content">
+                        <div class="slide-icon">
+                            <i class="fas fa-smile-wink"></i>
+                        </div>
+                        <div class="slide-text">
+                            <h3>Почему мы любим свою работу</h3>
+                            <p>Потому что видим результат. Потому что клиенты говорят «спасибо». Потому что каждый офис, который мы убираем, становится лучше. Мы испытываем счастье, когда делаем мир вокруг себя чище.</p>
+                            <div class="love-quote">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <p style="margin-top: 10px;">«Для нас чистота — это не просто работа, но и состояние души.»</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="slider-btn next-btn" id="nextSlide">❯</button>
+        </div>
+        
+        <!-- Индикаторы слайдов (точки внизу) -->
+        <div class="slider-dots" id="sliderDots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
+</div>
+    
 <!-- БЛОК: ИСТОРИЯ КОМПАНИИ (ТАЙМЛАЙН) -->
 <div class="company-history" id="history">
     <div class="container">
@@ -768,6 +1156,62 @@
         
         setTimeout(() => { statusDiv.innerHTML = ''; }, 5000);
     });
+</script>
+    <script>
+    // ========== КАРУСЕЛЬ (СЛАЙДЕР) ==========
+    const track = document.getElementById('sliderTrack');
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.getElementById('prevSlide');
+    const nextBtn = document.getElementById('nextSlide');
+    const dots = document.querySelectorAll('.dot');
+    
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+    
+    function updateSlider() {
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        
+        // Обновляем активную точку
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
+    
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateSlider();
+    }
+    
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        updateSlider();
+    }
+    
+    // Обработчики кнопок
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+    
+    // Обработчики точек
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentIndex = index;
+            updateSlider();
+        });
+    });
+    
+    // Автоматическое перелистывание каждые 7 секунд
+    let autoplayInterval = setInterval(nextSlide, 7000);
+    
+    // Останавливаем автоперелистывание при наведении на слайдер
+    const sliderContainer = document.querySelector('.slider-container');
+    if (sliderContainer) {
+        sliderContainer.addEventListener('mouseenter', () => {
+            clearInterval(autoplayInterval);
+        });
+        sliderContainer.addEventListener('mouseleave', () => {
+            autoplayInterval = setInterval(nextSlide, 7000);
+        });
+    }
 </script>
 </body>
 </html>
