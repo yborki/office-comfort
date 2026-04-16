@@ -776,23 +776,11 @@
     }
 }
 
-/* Телефоны (до 768px) */
+/* Телефоны до 768px */
 @media (max-width: 768px) {
     .container {
-        padding: 0 16px;
-    }
-    
-    h1 {
-        font-size: 1.8rem;
-    }
-    
-    h2 {
-        font-size: 1.5rem;
-        margin-bottom: 1.5rem;
-    }
-    
-    .section {
-        padding: 40px 0;
+        padding-left: 16px;
+        padding-right: 16px;
     }
     
     /* Шапка */
@@ -807,16 +795,19 @@
         justify-content: center;
     }
     
-    .nav-links a {
-        font-size: 0.9rem;
+    /* Заголовки */
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.6rem;
     }
     
     /* Hero секция */
     .hero {
         flex-direction: column;
         text-align: center;
-        gap: 25px;
-        padding: 10px 0 30px;
     }
     
     .hero-stats {
@@ -831,19 +822,7 @@
     /* Карточки преимуществ */
     .features-grid {
         grid-template-columns: 1fr;
-        gap: 16px;
-    }
-    
-    .feature-card {
-        padding: 20px 16px;
-    }
-    
-    .feature-card i {
-        font-size: 2rem;
-    }
-    
-    .feature-card h3 {
-        font-size: 1.1rem;
+        gap: 20px;
     }
     
     /* Блок цен */
@@ -858,111 +837,42 @@
     /* Контакты */
     .contact-grid {
         grid-template-columns: 1fr;
-        gap: 25px;
-    }
-    
-    .contact-info, .contact-form {
-        padding: 20px;
-    }
-    
-    .contact-detail {
-        gap: 12px;
-        margin-bottom: 20px;
-    }
-    
-    .contact-detail i {
-        font-size: 1.2rem;
-        width: 40px;
-        height: 40px;
+        gap: 30px;
     }
     
     /* Кнопки */
     .btn {
         padding: 12px 24px;
-        font-size: 0.9rem;
     }
     
     /* Футер */
     .footer {
-        padding: 25px 0;
-        font-size: 0.8rem;
-    }
-    
-    /* Отступы для секций (которые вы добавили) */
-    #advantages {
-        padding-top: 50px !important;
-    }
-    
-    #contact {
-        padding-top: 40px !important;
-        padding-bottom: 40px !important;
+        padding: 30px 0;
+        font-size: 0.85rem;
     }
 }
 
-/* Маленькие телефоны (до 480px) */
+/* Маленькие телефоны до 480px */
 @media (max-width: 480px) {
-    .container {
-        padding: 0 12px;
-    }
-    
     h1 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
     }
     
     h2 {
         font-size: 1.3rem;
     }
     
-    .hero-badge {
-        font-size: 0.75rem;
-    }
-    
     .hero-stats {
         flex-direction: column;
-        gap: 8px;
-    }
-    
-    .stat {
-        font-size: 0.9rem;
-    }
-    
-    .stat strong {
-        font-size: 1.1rem;
-    }
-    
-    .nav-links {
-        gap: 12px;
-    }
-    
-    .nav-links a {
-        font-size: 0.75rem;
+        gap: 10px;
     }
     
     .price-highlight {
         font-size: 1.6rem;
     }
     
-    input, textarea, select {
-        padding: 10px 14px;
-        font-size: 0.9rem;
-    }
-    
-    .contact-detail div strong {
-        font-size: 0.9rem;
-    }
-    
-    .contact-detail div {
-        font-size: 0.8rem;
-    }
-    
-    .btn {
-        padding: 10px 20px;
-        font-size: 0.85rem;
-    }
-    
-    .footer {
-        font-size: 0.7rem;
-        padding: 20px 0;
+    .contact-info, .contact-form {
+        padding: 20px;
     }
 }
 
@@ -1034,9 +944,7 @@
     }
     
     .slider-btn {
-        width: 32px;
-        height: 32px;
-        font-size: 1rem;
+        display: none;
     }
     
     .prev-btn {
@@ -1592,5 +1500,72 @@ dots.forEach((dot, index) => {
     });
 });
 </script>
+    <script>
+    // ========== СВАЙПЫ ДЛЯ КАРУСЕЛИ НА ТЕЛЕФОНАХ ==========
+(function initSwipe() {
+    const sliderContainer = document.querySelector('.slider-container');
+    const sliderTrack = document.getElementById('sliderTrack');
+    
+    if (!sliderContainer || !sliderTrack) return;
+    
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let isSwiping = false;
+    
+    sliderContainer.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+        isSwiping = true;
+    }, { passive: true });
+    
+    sliderContainer.addEventListener('touchmove', function(e) {
+        if (!isSwiping) return;
+        // Не блокируем прокрутку страницы, просто запоминаем позицию
+    }, { passive: true });
+    
+    sliderContainer.addEventListener('touchend', function(e) {
+        if (!isSwiping) return;
+        
+        touchEndX = e.changedTouches[0].screenX;
+        const swipeThreshold = 50;
+        const diff = touchEndX - touchStartX;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+            e.preventDefault();
+            
+            if (diff > 0) {
+                // Свайп вправо — предыдущий слайд
+                if (typeof prevSlide === 'function') {
+                    prevSlide();
+                } else {
+                    // Альтернативный способ
+                    const dots = document.querySelectorAll('.dot');
+                    const activeDot = document.querySelector('.dot.active');
+                    if (activeDot) {
+                        const currentIndex = Array.from(dots).indexOf(activeDot);
+                        const newIndex = (currentIndex - 1 + dots.length) % dots.length;
+                        dots[newIndex].click();
+                    }
+                }
+            } else {
+                // Свайп влево — следующий слайд
+                if (typeof nextSlide === 'function') {
+                    nextSlide();
+                } else {
+                    // Альтернативный способ
+                    const dots = document.querySelectorAll('.dot');
+                    const activeDot = document.querySelector('.dot.active');
+                    if (activeDot) {
+                        const currentIndex = Array.from(dots).indexOf(activeDot);
+                        const newIndex = (currentIndex + 1) % dots.length;
+                        dots[newIndex].click();
+                    }
+                }
+            }
+        }
+        
+        isSwiping = false;
+    });
+})();
+    </script>
 </body>
 </html>
