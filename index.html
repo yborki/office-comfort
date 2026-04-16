@@ -1085,6 +1085,14 @@
     border-radius: 20px;
     display: inline-block;
 }
+     /* Скрываем стрелки карусели на мобильных устройствах */
+@media (max-width: 768px) {
+    .prev-btn, 
+    .next-btn,
+    .slider-btn {
+        display: none !important;
+    }
+}   
     </style>
 </head>
 <body>
